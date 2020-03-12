@@ -120,7 +120,7 @@ header .contacts p {
   font-size: 1.9rem
 }
 
-header .contacts a {
+header .contacts button {
   font-family: 'MuseoSansCyrl_med', sans-serif;
   font-size: 1.4rem
 }
@@ -191,11 +191,13 @@ header .name p {
 }
 
 header .contacts p {
-  margin-top: .5rem
+  margin-top: .5rem;
+  margin-bottom: 0;
 }
 
-header .contacts a {
-  display: block;
+header .contacts button {
+  border: none;
+  background-color: white;
   margin-top: -1rem;
   color: #85be32;
   text-decoration: underline
@@ -1107,7 +1109,7 @@ header .logo img {
     font-size: 1.5rem
   }
 
-  header .contacts a {
+  header .contacts button {
     font-size: 1.2rem
   }
 

@@ -1,6 +1,6 @@
 const togglePopup = () => {
 
-  const callBtns = document.querySelectorAll('a.call-btn');
+  const callBtns = document.querySelectorAll('button.call-btn');
   const popupCall = document.querySelector('.popup-call');
 
   const sentenceBtns = document.querySelectorAll('.sentence-btn');
@@ -12,7 +12,6 @@ const togglePopup = () => {
   // Открытие модальных окон
   document.addEventListener('click', (event) => {
 
-    event.preventDefault();
     let target = event.target;
 
     callBtns.forEach(btn => {
@@ -35,9 +34,9 @@ const togglePopup = () => {
 
   // Закрытие модальных окон
   const closePopup = (popup) => {
+
     popup.addEventListener('click', (event) => {
 
-      event.preventDefault();
       let target = event.target;
 
       if (target.classList.contains('popup-close')) {
@@ -81,3 +80,89 @@ const moreBlocks = () => {
 }
 
 moreBlocks();
+
+// Отправка ajax-form
+
+const sendForm = (form) => {
+
+  const errorMessage = 'Что-то пошло не так';
+  const loadMessage = 'Загрузка...';
+  const successMessage = 'Ваша заявка отправлена!';
+
+  const statusMessage = document.createElement('div');
+  statusMessage.style.cssText = 'font-size: 2rem';
+  statusMessage.style.color = 'red';
+
+  const postData = (body) => {
+    return fetch('./server.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body),
+    })
+  }
+
+  form.addEventListener('submit', (event) => {
+
+    event.preventDefault();
+
+    form.append(statusMessage);
+    statusMessage.textContent = loadMessage;
+
+    const formData = new FormData(form);
+    let body = {};
+    formData.forEach((key, val) => {
+      body[key] = val;
+    });
+
+    postData(body)
+      .then(response => {
+        if (response.status === 200) {
+          statusMessage.textContent = successMessage;
+        } else {
+          statusMessage.textContent = errorMessage;
+        }
+        setTimeout(() => {
+          statusMessage.style.display = 'none';
+        }, 3000);
+      })
+      .catch(error => console.error(error));
+
+  });
+
+  // Запрет ввода символов для имени и телефона
+  [...document.forms].forEach((form) => {
+
+    [...form.elements].forEach((elem) => {
+
+      if (elem.classList.contains('person-name')) {
+        const pattern = /^[А-Яа-я\s]+$/;
+        let saveInput = '';
+        elem.addEventListener('input', () => {
+          if (pattern.test(elem.value) || elem.value === '') {
+            saveInput = elem.value;
+          } else {
+            elem.value = saveInput;
+          }
+        });
+      }
+
+      if (elem.classList.contains('phone-user')) {
+        const pattern = /^[\+\d]+$/;
+        let saveInput = '';
+        elem.addEventListener('input', () => {
+          if (pattern.test(elem.value) || elem.value === '') {
+            saveInput = elem.value;
+          } else {
+            elem.value = saveInput;
+          }
+        });
+      }
+    });
+  });
+}
+
+[...document.forms].forEach((form) => {
+  sendForm(form);
+});
