@@ -452,8 +452,8 @@
                     <p class="question">Остались вопросы?</p>
                     <p>Введите свой вопрос и в течении 15 минут я свяжусь с вами!</p>
                     <form class="director-form">
-                        <input type="text" name="user_quest" placeholder="Введите свой вопрос" required>
-                        <button class="button director-btn consultation-btn" name="submit" type="submit">Получить
+                        <input type="text" class="user_quest" name="user_quest" placeholder="Введите свой вопрос" required>
+                        <button class="button director-btn consultation-btn" type="button">Получить
                             консультацию
                         </button>
                     </form>
@@ -564,8 +564,8 @@
         <div class="popup-dialog">
             <div class="popup-content">
                 <!-- <div class="popup-form"> -->
-                <form class="capture-form text-center">
-                    <span class="circle"><button class="popup-close">&times;</button></span>
+                <form class="capture-form capture-director-form text-center">
+                    <span class="circle"><button class="popup-close" type="button">&times;</button></span>
                     <label for="name_13">Как к вам обращаться</label>
                     <input type="text" id="name_13" name="user_name" placeholder="Ваше имя" required>
                     <label for="phone_13">Ваш телефон для получения скидки</label>

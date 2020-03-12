@@ -9,6 +9,11 @@ const togglePopup = () => {
   const checkBtn = document.querySelector('.check-btn');
   const popupCheck = document.querySelector('.popup-check');
 
+  const consultationBtn = document.querySelector('.consultation-btn');
+  const popupConsultation = document.querySelector('.popup-consultation');
+
+  
+
   // Открытие модальных окон
   document.addEventListener('click', (event) => {
 
@@ -28,6 +33,10 @@ const togglePopup = () => {
 
     if (target === checkBtn) {
       popupCheck.style.display = 'block';
+    }
+
+    if (target === consultationBtn) {
+      popupConsultation.style.display = 'block';
     }
 
   })
@@ -53,6 +62,7 @@ const togglePopup = () => {
   closePopup(popupCall);
   closePopup(popupDiscount);
   closePopup(popupCheck);
+  closePopup(popupConsultation);
 };
 
 export default togglePopup;

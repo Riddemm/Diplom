@@ -15,5 +15,5 @@ togglePopup();
 moreBlocks();
 
 [...document.forms].forEach((form) => {
-  sendForm(form);
+    sendForm(form);
 });

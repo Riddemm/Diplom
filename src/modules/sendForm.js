@@ -1,5 +1,8 @@
 const sendForm = (form) => {
 
+  const modalDirectorForm = document.querySelector('.capture-director-form');
+  const directorInput = document.querySelector('.user_quest');
+
   const errorMessage = 'Что-то пошло не так';
   const loadMessage = 'Загрузка...';
   const successMessage = 'Ваша заявка отправлена!';
@@ -27,9 +30,14 @@ const sendForm = (form) => {
 
     const formData = new FormData(form);
     let body = {};
+
     formData.forEach((key, val) => {
-      body[key] = val;
+      body[val] = key;
     });
+
+    if (form === modalDirectorForm) {
+      body['user_quest'] = directorInput.value;
+    }
 
     postData(body)
       .then(response => {
