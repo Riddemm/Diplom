@@ -46,9 +46,16 @@ const sendForm = (form) => {
         } else {
           statusMessage.textContent = errorMessage;
         }
+
         setTimeout(() => {
-          statusMessage.style.display = 'none';
+          statusMessage.textContent = '';
         }, 3000);
+
+        [...document.forms].forEach((form) => {
+          [...form.elements].forEach((elem) => {
+            elem.value = '';
+          });
+        });
       })
       .catch(error => console.error(error));
 
@@ -82,6 +89,7 @@ const sendForm = (form) => {
           }
         });
       }
+
     });
   });
 };
