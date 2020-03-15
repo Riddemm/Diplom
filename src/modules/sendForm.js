@@ -1,6 +1,9 @@
+import {obj} from "./calc";
+
 const sendForm = (form) => {
 
   const modalDirectorForm = document.querySelector('.capture-director-form');
+  const captureForms = document.querySelectorAll('.capture-form');
   const directorInput = document.querySelector('.user_quest');
 
   const errorMessage = 'Что-то пошло не так';
@@ -38,6 +41,12 @@ const sendForm = (form) => {
     if (form === modalDirectorForm) {
       body['user_quest'] = directorInput.value;
     }
+
+    captureForms.forEach(captureForm => {
+      if (form === captureForm) {
+        body = Object.assign({}, obj, body); 
+      }
+    })
 
     postData(body)
       .then(response => {

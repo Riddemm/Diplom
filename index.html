@@ -181,35 +181,37 @@
                                     <div class="title-text">первый колодец (приемный)</div>
                                     <div class="select-box">
                                         <p><strong>Диаметр</strong></p>
-                                        <select class="form-control expand">
+                                        <select class="form-control expand  diameter">
                                             <option>1.4 метра</option>
                                             <option>2 метра</option>
                                         </select>
                                     </div>
                                     <div class="select-box">
                                         <p><strong>Количество колец</strong></p>
-                                        <select class="form-control expand">
+                                        <select class="form-control expand rings">
                                             <option>1 штука</option>
                                             <option>2 штуки</option>
                                             <option>3 штуки</option>
                                         </select>
                                     </div>
 
-                                    <div class="title-text">второй колодец (дренажный)</div>
-                                    <div class="select-box">
-                                        <p><strong>Диаметр</strong></p>
-                                        <select class="form-control expand">
-                                            <option>1.4 метра</option>
-                                            <option>2 метра</option>
-                                        </select>
-                                    </div>
-                                    <div class="select-box">
-                                        <p><strong>Количество колец</strong></p>
-                                        <select class="form-control expand">
-                                            <option>1 штука</option>
-                                            <option>2 штуки</option>
-                                            <option>3 штуки</option>
-                                        </select>
+                                    <div class="second-well">
+                                        <div class="title-text">второй колодец (дренажный)</div>
+                                        <div class="select-box">
+                                            <p><strong>Диаметр</strong></p>
+                                            <select class="form-control expand diameter">
+                                                <option>1.4 метра</option>
+                                                <option>2 метра</option>
+                                            </select>
+                                        </div>
+                                        <div class="select-box">
+                                            <p><strong>Количество колец</strong></p>
+                                            <select class="form-control expand rings">
+                                                <option>1 штука</option>
+                                                <option>2 штуки</option>
+                                                <option>3 штуки</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <a class="button construct-btn" data-toggle="collapse" data-parent="#accordion"
                                         href="#collapseThree"><span>Следующий шаг</span></a>
@@ -260,8 +262,8 @@
                                 aria-labelledby="headingFour">
                                 <div class="panel-body">
                                     <p>Введите расстояние до дома</p>
-                                    <input type="text">
-                                    <button class="button construct-btn call-btn">Получить расчет и скидку</button>
+                                    <input class="distance" type="text">
+                                    <button class="button construct-btn call-btn count-btn">Получить расчет и скидку</button>
                                 </div>
                             </div>
                         </div>
@@ -452,7 +454,8 @@
                     <p class="question">Остались вопросы?</p>
                     <p>Введите свой вопрос и в течении 15 минут я свяжусь с вами!</p>
                     <form class="director-form">
-                        <input type="text" class="user_quest" name="user_quest" placeholder="Введите свой вопрос" required>
+                        <input type="text" class="user_quest" name="user_quest" placeholder="Введите свой вопрос"
+                            required>
                         <button class="button director-btn consultation-btn" type="button">Получить
                             консультацию
                         </button>
@@ -582,7 +585,7 @@
         </div>
     </div>
 
-<script src="./dist/main.js"></script>
+    <script src="./dist/main.js"></script>
 
 </body>
 
