@@ -136,9 +136,28 @@ const calc = () => {
 
   // Вывод по кнопке
 
-  countButton.addEventListener('click', (event) => {
-    count(data);
-    resultInput.value = data.price;
+  constructorSection.addEventListener('change', event => {
+
+    let target = event.target;
+
+    if (target === switchFloorInput || target === switchTypeInput) {
+      count(data);
+      resultInput.value = data.price;
+    }
+
+    diameterSelects.forEach((diameterSelect, index) => {
+      if (target === diameterSelect) {
+        count(data);
+        resultInput.value = data.price;
+      }
+    });
+
+    ringsSelects.forEach((ringsSelect, index) => {
+      if (target === ringsSelect) {
+        count(data);
+        resultInput.value = data.price;
+      }
+    });
   });
 
   return data;
@@ -146,4 +165,7 @@ const calc = () => {
 
 const obj = calc();
 
-export {calc, obj};
+export {
+  calc,
+  obj
+};
