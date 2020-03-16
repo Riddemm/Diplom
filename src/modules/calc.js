@@ -104,6 +104,9 @@ const calc = () => {
   const count = (data) => {
 
     let startPrice = 0;
+    let floorPrice = 0;
+    let ringsRatio = 1;
+    let diametrRatio = 1;
 
     if (data.type) {
       startPrice = 10000;
@@ -111,27 +114,28 @@ const calc = () => {
       startPrice = 15000;
     }
 
-    if (data.floor && data.type) {
-      data.price = startPrice + 1000;
-    } else if (data.floor && !data.type) {
-      data.price = startPrice + 2000;
-    } else {
-      data.price = startPrice;
-    }
-
-    diameterSelects.forEach((diameterSelect, index) => {
+    diameterSelects.forEach((diameterSelect) => {
       if (diameterSelect.value === '2 метра') {
-        data.price *= 1.2;
+        diametrRatio *= 1.2;
       }
     })
 
-    ringsSelects.forEach((ringsSelect, index) => {
+    ringsSelects.forEach((ringsSelect) => {
       if (ringsSelect.value === '2 штуки') {
-        data.price *= 1.3;
+        ringsRatio *= 1.3;
       } else if (ringsSelect.value === '3 штуки') {
-        data.price *= 1.5;
+        ringsRatio *= 1.5;
       }
     });
+
+    if (data.floor && data.type) {
+      floorPrice = 1000;
+    } else if (data.floor && !data.type) {
+      floorPrice = 2000;
+    }
+
+    data.price = Math.floor(startPrice * ringsRatio * diametrRatio + floorPrice);
+
   }
 
   // Вывод при изменении в инпутах и селектах калькулятора
