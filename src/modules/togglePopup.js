@@ -4,6 +4,7 @@ const togglePopup = () => {
   const popupCall = document.querySelector('.popup-call');
 
   const sentenceBtns = document.querySelectorAll('.sentence-btn');
+  const countBtn = document.querySelector('.count-btn');
   const popupDiscount = document.querySelector('.popup-discount');
 
   const checkBtn = document.querySelector('.check-btn');
@@ -11,8 +12,6 @@ const togglePopup = () => {
 
   const consultationBtn = document.querySelector('.consultation-btn');
   const popupConsultation = document.querySelector('.popup-consultation');
-
-  
 
   // Открытие модальных окон
   document.addEventListener('click', (event) => {
@@ -30,6 +29,10 @@ const togglePopup = () => {
         popupDiscount.style.display = 'block';
       }
     });
+
+    if (target === countBtn) {
+      popupDiscount.style.display = 'block';
+    }
 
     if (target === checkBtn) {
       popupCheck.style.display = 'block';

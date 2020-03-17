@@ -7,7 +7,6 @@ const calc = () => {
   const ringsSelects = constructorSection.querySelectorAll('.rings');
   const switchFloorInput = constructorSection.querySelectorAll('.onoffswitch-checkbox')[1];
   const distanceInput = constructorSection.querySelector('.distance');
-  const countButton = constructorSection.querySelector('.count-btn');
   const resultInput = constructorSection.querySelector('#calc-result');
 
   let data = {
@@ -149,14 +148,14 @@ const calc = () => {
       resultInput.value = data.price;
     }
 
-    diameterSelects.forEach((diameterSelect, index) => {
+    diameterSelects.forEach((diameterSelect) => {
       if (target === diameterSelect) {
         count(data);
         resultInput.value = data.price;
       }
     });
 
-    ringsSelects.forEach((ringsSelect, index) => {
+    ringsSelects.forEach((ringsSelect) => {
       if (target === ringsSelect) {
         count(data);
         resultInput.value = data.price;
